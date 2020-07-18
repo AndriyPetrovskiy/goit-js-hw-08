@@ -27,6 +27,7 @@ const getOpenModale = (event) => {
     if (event.target.nodeName === 'IMG') {
         lightbox.classList.add('is-open');
         ligthImage.src = event.target.getAttribute('data-source');
+        window.addEventListener('keydown', onEscapePress);
     }
     return;
 }
@@ -34,7 +35,15 @@ const getOpenModale = (event) => {
 function getCloseModal () {
     lightbox.classList.remove('is-open');
     ligthImage.src = '';
+    window.removeEventListener('keydown', onEscapePress);
 }
+
+function onEscapePress (event) {
+    if(event.code === 'Escape') {
+        getCloseModal();
+    }
+};
+
 
 getElementByGallery(gallery, listGalleryRef);
 closeModal.addEventListener('click', getCloseModal);
