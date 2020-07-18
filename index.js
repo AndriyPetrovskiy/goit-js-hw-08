@@ -10,8 +10,13 @@ const listGalleryRef = document.querySelector('.js-gallery');
 function getElementByGallery(array, place) {
     for(let item of array) {
         const liRef = document.createElement('li');
+        liRef.classList.add("gallery__item");
+
         const aRef = document.createElement('a');
+        aRef.classList.add("gallery__link");
+        
         const imgRef = document.createElement('img');
+        imgRef.classList.add("gallery__image");
         
         imgRef.setAttribute('src', item.preview);
         imgRef.setAttribute('data-source', item.original);
